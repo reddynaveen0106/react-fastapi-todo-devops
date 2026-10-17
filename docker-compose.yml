@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: todos
       POSTGRES_DB: todos
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -23,7 +23,7 @@ services:
     environment:
       DATABASE_URL: postgresql://todos:todos@db:5432/todos
     ports:
-      - "8000:8000"
+      - "8010:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -44,7 +44,7 @@ services:
     container_name: reactapp-frontend
     ports:
       # host:container — nginx listens on 8080 inside the container
-      - "3000:8080"
+      - "3033:8080"
     # SELinux on Fedora rootless Podman can block nginx log/device access
     security_opt:
       - label=disable
